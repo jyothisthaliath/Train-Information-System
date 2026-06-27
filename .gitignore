@@ -1,0 +1,41 @@
+# Keil C compiler build outputs
+*.obj
+*.lst
+*.hex
+*.lnp
+*.map
+*.dep
+*.axf
+*.o
+*.d
+*.crf
+*.plg
+*.htm
+*.build_log.htm
+
+# MPLAB IDE files
+*.mptags
+*.tagsrc
+*.cof
+*.mcs
+*.hxl
+
+# Visual Basic 6.0 user / workspace settings
+*.vbw
+*.log
+*.tmp
+
+# Word backup files
+~$*.doc
+~$*.docx
+~$*.html
+
+# OS metadata files
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Original college report documents
+unused/
+
+
