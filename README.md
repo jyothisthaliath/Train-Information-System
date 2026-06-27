@@ -1,15 +1,28 @@
 # 🚄 Train Tracking and Information System with Touch-Screen & SMS Interface
 
-> **📦 College B.Tech Main Project (May 2012)**  
+> **📦 College B.Tech Main Project (2011–2012)**  
 > An automated telemetry tracking system that gathers real-time train locations using onboard GPS, transmits coordinates over GPRS, and presents the live position on an interactive touch-screen kiosk (Google Maps) and responds to passenger queries via automated SMS messages.
 
+> [!NOTE]
+> This repository is published as a portfolio and archival record of an undergraduate main project completed during 2011–2012. The hardware choices, development environment, and coding style reflect the systems and tools available at that time.
+
+> [!TIP]
+> The project report is included in this repository for reference:
+> *   **[Full Project Report](docs/report_body.md)**
+> *   **[Front Pages & Certificate](docs/front_pages.md)**
+
 ![System Overview](./images/system_overview.gif)
+
+
 
 ---
 
 ## 📋 Table of Contents
 1. [Project Overview & Abstract](#-project-overview--abstract)
+   * [Problem Statement](#-problem-statement)
+   * [Proposed Solution](#-proposed-solution)
 2. [Key Features](#-key-features)
+
 3. [System Architecture & Components](#-system-architecture--components)
 4. [Hardware & Power Components](#-hardware--power-components)
 5. [PCB Fabrication](#-pcb-fabrication)
@@ -28,22 +41,21 @@
 
 This project was developed during our **Bachelor of Technology in Electronics & Communication Engineering** at the **Federal Institute of Science and Technology (FISAT)**, Ernakulam (affiliated with Mahatma Gandhi University).
 
-Finding the real-time location of a train for a passenger on the move can be a difficult task, especially during inclement weather or night journeys. This system eliminates these difficulties by providing real-time tracking information directly to passenger mobile phones and station kiosks.
+### 🔍 Problem Statement
+Finding the real-time location of a train can be difficult for passengers, especially during bad weather or night journeys. People inside closed coaches are often unaware of upcoming stations or the Expected Time of Arrival (ETA), and passengers waiting at intermediate stations lack a reliable way to know if a train is running on time or where it is currently located.
 
-The tracking is implemented using a **GPS (Global Positioning System)** receiver onboard the train, controlled by a dedicated PIC microcontroller. The location data is uploaded to a remote station server via **GPRS/GSM** cellular network communication, allowing passengers to monitor train status by simply logging onto a webpage.
+### 💡 Proposed Solution
+This project eliminates these difficulties by making train status information easily accessible. An onboard module coordinates tracking operations, continuously updating coordinates via a GPS receiver and periodically uploading them to a remote station server via GPRS communication. This enables passengers and station operators to track the train in real-time from anywhere in the world using Google Maps.
 
-Passengers can query details in two ways:
-1. **Web Interface**: Review whether a train is running on time and track its current coordinates on a live map.
-2. **SMS Interface**: Query train locations via SMS commands and receive replies containing the current station, distance to the next station, and expected time of arrival (ETA).
+In addition, a Kiosk application calculates the distance between the current coordinates of the train and a database of upcoming stations. Passengers can request train tracking status simply by sending an SMS to the station module, which decodes the request and sends a detailed SMS reply containing the current position, distance to the next station, and expected travel time so passengers do not miss their stations.
 
 ---
 
 ## ✨ Key Features
 
-*   **Real-time Location Telemetry**: The onboard train module continuously reads and parses GPS NMEA sentences (`$GPRMC`) to extract latitude, longitude, and speed.
-*   **Dual-Peripheral Serial Sharing**: Built a custom logic-gate NAND switching circuit to multiplex the single PIC16F877A hardware USART RX line between the GPS module (TTL logic) and GPRS/GSM modem (CMOS RS232 logic via MAX232).
-*   **Interactive Touch Kiosk**: Designed a station information kiosk running a Visual Basic 6.0 interface using a resistive touch-screen controller. Passengers can touch menu items to query trains and view locations plotted on Google Maps.
-*   **Automated SMS Responder**: Passengers can send an SMS query containing the train number to the server. The server computes the distance to the next station (using the **Haversine formula**) and replies with the current station name, distance, and Expected Time of Arrival (ETA) based on train speed.
+*   **Real-time Location Telemetry**: The onboard train module continuously reads and parses GPS NMEA sentences to extract latitude, longitude, and speed.
+*   **Interactive Touch Kiosk**: Designed a station information kiosk using a resistive touch-screen controller. Passengers can touch menu items to query trains and view locations plotted on Google Maps.
+*   **Automated SMS Responder**: Passengers can send an SMS query containing the train number to the server. The server computes the distance to the next station and replies with the current station name, distance, and Expected Time of Arrival (ETA) based on train speed.
 *   **Local LCD Debugging**: Displays local IP address, connection flags, and telemetry transfer status directly on an onboard character LCD.
 
 ---
@@ -129,7 +141,10 @@ The development stack spanned multiple environments:
 
 ## 💻 Firmware & Source Code
 
-The firmware source code has been extracted and organized into logical C files:
+The firmware source code has been extracted and organized into logical C files.
+
+> [!NOTE]
+> Only the microchip C firmware files are included in this repository. The Visual Basic 6.0 desktop application source code is not available as it was lost.
 
 ### 1. Onboard Train Module Firmware
 Located under [`code/train_module/`](code/train_module/):
@@ -173,11 +188,10 @@ The microcontrollers are programmed in Embedded C using the HI-TECH C compiler (
 6.  Flash the binary using a PIC programmer (e.g., PICkit 2 or PICkit 3).
 
 ### 2. Desktop Kiosk Application
-The desktop client and SMS responder are built using Visual Basic 6.0:
-1.  Install the Visual Basic 6.0 development environment on a Windows host.
-2.  Install the MSComm serial control libraries.
-3.  Connect the GSM/GPRS modem and touch screen receiver to the COM ports.
-4.  Launch the VB6 application, which will map train GPS coordinates onto Google Maps.
+> [!WARNING]
+> **Source Code Lost**: The Visual Basic 6.0 (VB6) source code for the Desktop Kiosk and SMS server application was unfortunately lost over time and is **not available** in this repository.
+> 
+> However, the design, functional logic, and serial database communication logic are fully documented in the [Full Project Report](docs/report_body.md#chapter-7-software-section) as an architectural reference.
 
 ---
 

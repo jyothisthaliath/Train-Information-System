@@ -133,7 +133,11 @@ The software architecture consists of two main parts: the PIC16F877A C firmware 
 ### 7.1 Software Platforms Used
 
 #### 7.1.1 Visual Basic 6.0
-Visual Basic 6.0 (VB6) is used to develop the desktop kiosk application and the SMS server. It communicates with the GSM modem and Touch Screen controller using the **MSComm** serial control. The UI features forms, buttons, and a WebBrowser control that renders the Google Maps tracking page.
+> [!WARNING]
+> **Source Code Lost**: The Visual Basic 6.0 (VB6) source code files for the desktop kiosk interface and SMS server were lost over time and are **not available** in this repository. The description below is maintained for documentation and architectural reference purposes.
+
+Visual Basic 6.0 (VB6) was used to develop the desktop kiosk application and the SMS server. It communicates with the GSM modem and Touch Screen controller using the **MSComm** serial control. The UI features forms, buttons, and a WebBrowser control that renders the Google Maps tracking page.
+
 
 #### 7.1.2 Keil µVision
 The Keil µVision IDE is used to write, compile, and debug the PIC16F877A C firmware. It provides simulator testbenches and code compilation into `.hex` binaries for programming the microcontrollers.
