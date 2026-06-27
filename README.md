@@ -4,13 +4,8 @@ An automated telemetry tracking system that gathers real-time train locations us
 
 > [!NOTE]
 > This repository is published as a portfolio and archival record of a **Bachelor of Technology (B.Tech) Main Project** completed during the academic year **2011–2012**. The hardware choices, development environment, and coding style reflect the systems and tools available at that time.
-> 
-> * 📄 **[Full Project Report](docs/report_body.md)**
-> * 🎓 **[Front Pages & Certificate](docs/front_pages.md)**
 
 ![System Overview](./images/system_overview.png)
-
-
 
 ---
 
@@ -19,18 +14,18 @@ An automated telemetry tracking system that gathers real-time train locations us
    * [Problem Statement](#-problem-statement)
    * [Proposed Solution](#-proposed-solution)
 2. [Key Features](#-key-features)
-
-3. [System Architecture & Components](#-system-architecture--components)
-4. [Hardware & Power Components](#-hardware--power-components)
-5. [PCB Fabrication](#-pcb-fabrication)
-6. [Software & Development Tools](#-software--development-tools)
-7. [Firmware & Source Code](#-firmware--source-code)
-8. [Circuit Schematics](#-circuit-schematics)
-9. [Getting Started & Build Instructions](#-getting-started--build-instructions)
-10. [Results & Limitations](#-results--limitations)
-11. [Future Scope](#-future-scope)
-12. [Project Team & Credits](#-project-team--credits)
-13. [License](#-license)
+3. [Project Documentation & Reports](#-project-documentation--reports)
+4. [System Architecture & Components](#-system-architecture--components)
+5. [Hardware & Power Components](#-hardware--power-components)
+6. [PCB Fabrication](#-pcb-fabrication)
+7. [Software & Development Tools](#-software--development-tools)
+8. [Firmware & Source Code](#-firmware--source-code)
+9. [Circuit Schematics](#-circuit-schematics)
+10. [Getting Started & Build Instructions](#-getting-started--build-instructions)
+11. [Results & Limitations](#-results--limitations)
+12. [Future Scope](#-future-scope)
+13. [Project Team & Credits](#-project-team--credits)
+14. [License](#-license)
 
 ---
 
@@ -54,6 +49,16 @@ In addition, a Kiosk application calculates the distance between the current coo
 *   **Interactive Touch Kiosk**: Designed a station information kiosk using a resistive touch-screen controller. Passengers can touch menu items to query trains and view locations plotted on Google Maps.
 *   **Automated SMS Responder**: Passengers can send an SMS query containing the train number to the server. The server computes the distance to the next station and replies with the current station name, distance, and Expected Time of Arrival (ETA) based on train speed.
 *   **Local LCD Debugging**: Displays local IP address, connection flags, and telemetry transfer status directly on an onboard character LCD.
+
+---
+
+## 📂 Project Documentation & Reports
+
+The complete academic documentation, certificates, and schematics for this project are archived and organized as follows:
+
+*   **[Full Project Report](docs/report_body.md)**: Contains the complete 9-chapter engineering report, covering introduction, block diagrams, circuit descriptions, component specifications, PCB fabrication steps, and software architecture.
+*   **[Front Pages & Certificates](docs/front_pages.md)**: Contains the official project title sheet, certificates of approval, student declaration, and executive abstract.
+*   **[Circuit Diagrams & PCB Schematics](diagram/)**: High-fidelity PDF schematics for the onboard train module circuit ([Protel Schem.pdf](diagram/Protel%20Schem.pdf)) and the touch screen controller board ([touch.pdf](diagram/touch.pdf)).
 
 ---
 
