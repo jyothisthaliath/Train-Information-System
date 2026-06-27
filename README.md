@@ -1,4 +1,4 @@
-# 🚄 Train Tracking and Information System with Touch-Screen & SMS Interface
+# Train Tracking and Information System with Touch-Screen & SMS Interface
 
 An automated telemetry tracking system that gathers real-time train locations using onboard GPS, transmits coordinates over GPRS, presents the live position on an interactive touch-screen kiosk, and responds to passenger queries via automated SMS messages.
 
