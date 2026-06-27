@@ -1,15 +1,12 @@
 # 🚄 Train Tracking and Information System with Touch-Screen & SMS Interface
 
-> **📦 College B.Tech Main Project (2011–2012)**  
-> An automated telemetry tracking system that gathers real-time train locations using onboard GPS, transmits coordinates over GPRS, and presents the live position on an interactive touch-screen kiosk (Google Maps) and responds to passenger queries via automated SMS messages.
+An automated telemetry tracking system that gathers real-time train locations using onboard GPS, transmits coordinates over GPRS, presents the live position on an interactive touch-screen kiosk, and responds to passenger queries via automated SMS messages.
 
 > [!NOTE]
-> This repository is published as a portfolio and archival record of an undergraduate main project completed during 2011–2012. The hardware choices, development environment, and coding style reflect the systems and tools available at that time.
-
-> [!TIP]
-> The project report is included in this repository for reference:
-> *   **[Full Project Report](docs/report_body.md)**
-> *   **[Front Pages & Certificate](docs/front_pages.md)**
+> This repository is published as a portfolio and archival record of a **Bachelor of Technology (B.Tech) Main Project** completed during the academic year **2011–2012**. The hardware choices, development environment, and coding style reflect the systems and tools available at that time.
+> 
+> * 📄 **[Full Project Report](docs/report_body.md)**
+> * 🎓 **[Front Pages & Certificate](docs/front_pages.md)**
 
 ![System Overview](./images/system_overview.png)
 
@@ -39,7 +36,7 @@
 
 ## 🌐 Project Overview & Abstract
 
-This project was developed during our **Bachelor of Technology in Electronics & Communication Engineering** at the **Federal Institute of Science and Technology (FISAT)**, Ernakulam (affiliated with Mahatma Gandhi University).
+This project was developed as our **B.Tech Main Project** during the academic year **2011–2012** for the Bachelor of Technology in Electronics & Communication Engineering at the **Federal Institute of Science and Technology (FISAT)**, Ernakulam (affiliated with Mahatma Gandhi University).
 
 ### 🔍 Problem Statement
 Finding the real-time location of a train can be difficult for passengers, especially during bad weather or night journeys. People inside closed coaches are often unaware of upcoming stations or the Expected Time of Arrival (ETA), and passengers waiting at intermediate stations lack a reliable way to know if a train is running on time or where it is currently located.
