@@ -18,7 +18,7 @@ The project is divided into two primary subsystems:
 
 The overall tracking system is divided into four main functional blocks: the **Train Module**, the **Information Kiosk**, the **SMS Server**, and the **Web Interface**.
 
-![System Overview](../images/system_overview.gif)
+![System Overview](../images/system_overview.png)
 *Fig. 2.1: System Overview Block Diagram*
 
 ### 2.1 Train Module
@@ -45,7 +45,7 @@ The same mapping interface running on the Kiosk PC can be distributed as a web a
 
 ### 3.1 Touch-Screen Module
 
-![Touch-Screen Circuit](../images/touch_circuit.jpg)
+![Touch-Screen Circuit](../images/touch_circuit.png)
 *Fig. 3.1: Circuit of Touch-Screen Module*
 
 The touch-screen interface circuit features a PIC16F877A microcontroller, an H-bridge driver circuit, a resistive touch panel, and a MAX232 level converter. The PIC microcontroller is clocked by a crystal oscillator connected to OSC1 (Pin 13) and OSC2 (Pin 14). A 15V DC power supply is stepped down and regulated to a stable +5V using an LM7805 voltage regulator.
@@ -54,7 +54,7 @@ The H-bridge circuit consists of four transistors: two NPN transistors (Q2 and Q
 
 ### 3.2 Train Module
 
-![Train Module Circuit](../images/train_circuit.gif)
+![Train Module Circuit](../images/train_circuit.png)
 *Fig. 3.2: Circuit of Train Module*
 
 The onboard train circuit consists of a PIC16F877A microcontroller, a 16x2 character LCD, a GPS module, a GPRS modem, a MAX232 level converter, and a NAND-gate switching circuit. The LCD data pins (D0–D7) are connected to PORTD of the PIC, while control pins Enable (EN) and Register Select (RS) are connected to `RC1` (Pin 16) and `RC5` (Pin 24) respectively. The Read/Write (R/W) pin is grounded. Power is supplied by a regulated 12V/5V LM7805 circuit.
@@ -72,7 +72,7 @@ Because the GPS module uses TTL logic and the GPRS modem uses RS232 CMOS levels,
 ### 4.1 LCD Display
 The Train Module uses a standard 16x2 character LCD display (16 characters per line, 2 lines) with an LED backlight. It displays the initialization status, GPRS network messages, IP address, and coordinates. The display operates via an internal command register (selected when `RS = 0`) and a character data register (selected when `RS = 1`). Data write operations require the Enable (`EN`) pin to be pulsed high.
 
-![LCD Display](../images/lcd_display.jpg)
+![LCD Display](../images/lcd_display.png)
 *Fig. 4.1: Character LCD Module*
 
 ### 4.2 Power Supply
@@ -102,7 +102,7 @@ The MAX232 IC converts serial signals between RS232 levels (-15V to +15V) and TT
 ### 4.6 PIC16F877A Microcontroller
 The PIC16F877A is a 40-pin RISC-based 8-bit microcontroller. It features 8KB of Flash program memory, 368 bytes of RAM, 256 bytes of EEPROM, multiple timers, a 10-bit Analog-to-Digital Converter (ADC), and a hardware USART port.
 
-![PIC16F877A](../images/pic16f877a_pinout.gif)
+![PIC16F877A](../images/pic16f877a_pinout.png)
 *Fig. 4.6: PIC16F877A Microcontroller Pinout*
 
 ### 4.7 Touch Screen Panel
@@ -127,7 +127,7 @@ Printed Circuit Boards (PCBs) are fabricated to ensure stable, noise-free operat
 
 The software architecture consists of two main parts: the PIC16F877A C firmware and the Visual Basic 6 kiosk application.
 
-![Visual Basic IDE](../images/vb_interface_example.gif)
+![Visual Basic IDE](../images/vb_interface_example.png)
 *Fig. 7.1: Visual Basic 6 IDE Interface*
 
 ### 7.1 Software Platforms Used
@@ -145,7 +145,7 @@ The Keil µVision IDE is used to write, compile, and debug the PIC16F877A C firm
 #### 7.1.3 Protel Schematic
 Protel CAD is used to generate circuit schematics and route the PCB tracks.
 
-![Protel Example 1](../images/protel_schematic_1.gif)
+![Protel Example 1](../images/protel_schematic_1.png)
 *Fig. 7.2: Example Circuit Drawing in Protel*
 
 ![Protel Example 2](../images/protel_schematic_2.gif)

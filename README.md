@@ -11,7 +11,7 @@
 > *   **[Full Project Report](docs/report_body.md)**
 > *   **[Front Pages & Certificate](docs/front_pages.md)**
 
-![System Overview](./images/system_overview.gif)
+![System Overview](./images/system_overview.png)
 
 
 
@@ -102,13 +102,13 @@ An automated desktop application connected to a GSM modem listens for inbound qu
 
 | GPS Module (AN-Top) | GSM/GPRS Modem | PIC16F877A Controller |
 | :---: | :---: | :---: |
-| ![GPS Module](./images/gps_module.jpg) | ![GSM Modem](./images/gsm_modem.jpg) | ![PIC16F877A Pinout](./images/pic16f877a_pinout.gif) |
+| ![GPS Module](./images/gps_module.jpg) | ![GSM Modem](./images/gsm_modem.jpg) | ![PIC16F877A Pinout](./images/pic16f877a_pinout.png) |
 
 ### LCD & Level Conversion Components
 
 | 16x2 LCD Display | MAX232 Level Converter | Power Supply Regulator |
 | :---: | :---: | :---: |
-| ![LCD Display](./images/lcd_display.jpg) | ![MAX232](./images/max232.jpg) | ![Power Supply](./images/power_supply.gif) |
+| ![LCD Display](./images/lcd_display.png) | ![MAX232](./images/max232.jpg) | ![Power Supply](./images/power_supply.gif) |
 
 *   **Microcontroller**: PIC16F877A (8-bit RISC, 8KB Flash, 368B RAM, 10-bit ADC).
 *   **GPS Receiver**: Standalone 5V serial Patch Antenna On Top (POT) module.
@@ -166,13 +166,13 @@ The original schematic and PCB designs are stored in PDF format under the [`diag
 Contains the PIC16F877A, character LCD, MAX232 level converter, and the NAND gate multiplexer switching logic.
 *   [Protel Schem.pdf](diagram/Protel%20Schem.pdf) (Complete PCB Schematic)
 
-![Train Module Circuit](./images/train_circuit.gif)
+![Train Module Circuit](./images/train_circuit.png)
 
 ### 2. Touch Screen Controller
 Features the H-bridge switching transistors and analog-to-digital coordinate reader.
 *   [touch.pdf](diagram/touch.pdf) (Complete PCB Schematic)
 
-![Touch Circuit](./images/touch_circuit.jpg)
+![Touch Circuit](./images/touch_circuit.png)
 
 ---
 
