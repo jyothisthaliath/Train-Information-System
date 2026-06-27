@@ -102,13 +102,13 @@ An automated desktop application connected to a GSM modem listens for inbound qu
 
 | GPS Module (AN-Top) | GSM/GPRS Modem | PIC16F877A Controller |
 | :---: | :---: | :---: |
-| ![GPS Module](./images/gps_module.jpg) | ![GSM Modem](./images/gsm_modem.jpg) | ![PIC16F877A Pinout](./images/pic16f877a_pinout.png) |
+| ![GPS Module](./images/gps_module.png) | ![GSM Modem](./images/gsm_modem.png) | ![PIC16F877A Pinout](./images/pic16f877a_pinout.gif) |
 
 ### LCD & Level Conversion Components
 
 | 16x2 LCD Display | MAX232 Level Converter | Power Supply Regulator |
 | :---: | :---: | :---: |
-| ![LCD Display](./images/lcd_display.png) | ![MAX232](./images/max232.jpg) | ![Power Supply](./images/power_supply.gif) |
+| ![LCD Display](./images/lcd_display.png) | ![MAX232](./images/max232.png) | ![Power Supply](./images/power_supply.gif) |
 
 *   **Microcontroller**: PIC16F877A (8-bit RISC, 8KB Flash, 368B RAM, 10-bit ADC).
 *   **GPS Receiver**: Standalone 5V serial Patch Antenna On Top (POT) module.

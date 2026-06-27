@@ -84,25 +84,25 @@ The circuits use a regulated power supply based on the LM7805 voltage regulator 
 ### 4.3 GSM/GPRS Modem
 The GPRS/GSM modem is a tri-band module operating on EGSM 900 MHz, DCS 1800 MHz, and PCS 1900 MHz frequencies. It features a built-in TCP/IP stack to support internet connections over GPRS. The modem communicates with the microcontroller using standard AT commands over an RS232 serial interface.
 
-![GSM Modem](../images/gsm_modem.jpg)
+![GSM Modem](../images/gsm_modem.png)
 *Fig. 4.3: GSM/GPRS Modem*
 
 ### 4.4 GPS Module
 The GPS module is a high-gain standalone receiver with a Patch Antenna On Top (POT). It outputs standard NMEA0183 sentences (such as `$GPRMC` and `$GPGGA`) in raw serial ASCII format. It contains an internal RTC backup battery and can be connected directly to the microcontroller's UART RX pin.
 
-![GPS Module](../images/gps_module.jpg)
+![GPS Module](../images/gps_module.png)
 *Fig. 4.4: GPS Receiver Module*
 
 ### 4.5 MAX232 Serial Level Converter
 The MAX232 IC converts serial signals between RS232 levels (-15V to +15V) and TTL logic levels (0V to +5V). It uses a charge pump with external capacitors to generate the required RS232 voltages from a single +5V supply.
 
-![MAX232](../images/max232.jpg)
+![MAX232](../images/max232.png)
 *Fig. 4.5: MAX232 Level Converter Pinout*
 
 ### 4.6 PIC16F877A Microcontroller
 The PIC16F877A is a 40-pin RISC-based 8-bit microcontroller. It features 8KB of Flash program memory, 368 bytes of RAM, 256 bytes of EEPROM, multiple timers, a 10-bit Analog-to-Digital Converter (ADC), and a hardware USART port.
 
-![PIC16F877A](../images/pic16f877a_pinout.png)
+![PIC16F877A](../images/pic16f877a_pinout.gif)
 *Fig. 4.6: PIC16F877A Microcontroller Pinout*
 
 ### 4.7 Touch Screen Panel
@@ -127,7 +127,7 @@ Printed Circuit Boards (PCBs) are fabricated to ensure stable, noise-free operat
 
 The software architecture consists of two main parts: the PIC16F877A C firmware and the Visual Basic 6 kiosk application.
 
-![Visual Basic IDE](../images/vb_interface_example.png)
+![Visual Basic IDE](../images/vb_interface_example.gif)
 *Fig. 7.1: Visual Basic 6 IDE Interface*
 
 ### 7.1 Software Platforms Used
@@ -145,7 +145,7 @@ The Keil µVision IDE is used to write, compile, and debug the PIC16F877A C firm
 #### 7.1.3 Protel Schematic
 Protel CAD is used to generate circuit schematics and route the PCB tracks.
 
-![Protel Example 1](../images/protel_schematic_1.png)
+![Protel Example 1](../images/protel_schematic_1.gif)
 *Fig. 7.2: Example Circuit Drawing in Protel*
 
 ![Protel Example 2](../images/protel_schematic_2.gif)
