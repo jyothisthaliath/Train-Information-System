@@ -2,9 +2,6 @@
 
 An automated telemetry tracking system that gathers real-time train locations using onboard GPS, transmits coordinates over GPRS, presents the live position on an interactive touch-screen kiosk, and responds to passenger queries via automated SMS messages.
 
-> [!NOTE]
-> This repository is published as a portfolio and archival record of a **Bachelor of Technology (B.Tech) Main Project** completed during the academic year **2011–2012**. The hardware choices, development environment, and coding style reflect the systems and tools available at that time.
-
 ![System Overview](./images/system_overview.png)
 
 ---
@@ -228,3 +225,8 @@ Thanks to the Department of Electronics & Communication Engineering, FISAT, and 
 ## 📄 License
 
 This repository is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
+
+---
+
+> [!NOTE]
+> This repository is published as a portfolio and archival record of a **Bachelor of Technology (B.Tech) Main Project** completed during the academic year **2011–2012**. The hardware choices, development environment, and coding style reflect the systems and tools available at that time.
