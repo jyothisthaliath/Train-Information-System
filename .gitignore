@@ -25,6 +25,15 @@
 *.log
 *.tmp
 
+# VB6 compiled binaries
+*.exe
+
+# Access database lock files
+*.ldb
+
+# FoxPro user files (not part of project)
+FOXUSER.*
+
 # Word backup files
 ~$*.doc
 ~$*.docx

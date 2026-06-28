@@ -133,8 +133,8 @@ The software architecture consists of two main parts: the PIC16F877A C firmware 
 ### 7.1 Software Platforms Used
 
 #### 7.1.1 Visual Basic 6.0
-> [!WARNING]
-> **Source Code Lost**: The Visual Basic 6.0 (VB6) source code files for the desktop kiosk interface and SMS server were lost over time and are **not available** in this repository. The description below is maintained for documentation and architectural reference purposes.
+> [!NOTE]
+> The Visual Basic 6.0 source code is available under [`code/kiosk_program/`](../code/kiosk_program/). The project file is `TrainTracking.vbp` and compiles to `Train.exe`.
 
 Visual Basic 6.0 (VB6) was used to develop the desktop kiosk application and the SMS server. It communicates with the GSM modem and Touch Screen controller using the **MSComm** serial control. The UI features forms, buttons, and a WebBrowser control that renders the Google Maps tracking page.
 

@@ -1,0 +1,363 @@
+Dim buf As String
+Dim RecArray() As String
+Dim Connected As Boolean
+Dim NDelay As Integer
+Dim msgCount As String
+
+Private Sub Command1_Click()
+Form2.Visible = True
+
+End Sub
+
+Private Sub Command10_Click()
+Text2.Text = Text2.Text & 7
+
+End Sub
+
+Private Sub Command11_Click()
+Text2.Text = Text2.Text & 8
+
+End Sub
+
+Private Sub Command12_Click()
+Text2.Text = Text2.Text & 2
+
+End Sub
+
+Private Sub Command13_Click()
+Text2.Text = Text2.Text & 3
+
+End Sub
+
+Private Sub Command14_Click()
+Text2.Text = Text2.Text & 4
+
+End Sub
+
+Private Sub Command15_Click()
+Text2.Text = Text2.Text & 9
+
+End Sub
+
+Private Sub Command16_Click()
+Text2.Text = Text2.Text & "."
+
+End Sub
+
+Private Sub Command17_Click()
+Text2.Text = ""
+
+End Sub
+
+Private Sub Command18_Click()
+Text2.Text = Text2.Text & " "
+
+End Sub
+
+Private Sub Command19_Click()
+Unload Me
+End Sub
+
+Private Sub Command2_Click()
+Winsock1.RemoteHost = Text2.Text
+Winsock1.RemotePort = 2050
+Winsock1.Connect Text2.Text, 2050
+
+ 
+End Sub
+
+Private Sub Command3_Click()
+If Text3.Text = "" Then
+Else
+Dim gpsData As String
+    Dim gpsdata2 As String
+    StrData = Text3.Text
+    gpsData = StrData
+   'frmBrowser.Shape1.FillStyle = 0
+   
+
+   
+   
+        t = InStr(StrData, ",")
+        Lat = Left$(StrData, t - 1)
+        Lng = Mid$(StrData, t + 1)
+     
+     
+        t = InStr(Lat, ".")
+        T2 = Left$(Lat, t - 3)
+   
+        T3 = T2 + (Mid$(Lat, t - 2)) / 60
+       Lat = Round(T3, 5)
+       frmBrowser.Text1.Text = Lat
+    
+        t = InStr(Lng, ".")
+        't = InStr
+        T2 = Left$(Lng, t - 3)
+        T3 = T2 + (Mid$(Lng, t - 2)) / 60
+       Lng = Round(T3, 5)
+     frmBrowser.Text2.Text = Lng
+     frmBrowser.Show
+     End If
+End Sub
+
+
+Private Sub Command4_Click()
+If Not MSComm2.PortOpen Then
+   With MSComm2
+            .CommPort = Combo2.ListIndex + 1
+            .Handshaking = comNone
+            .RThreshold = 1
+            .RTSEnable = True
+            .Settings = "9600,n,8,1"
+            .SThreshold = 0
+            .InputLen = 1
+            .PortOpen = True
+End With
+            Command4.Enabled = False
+   
+    End If
+
+ Connected = False
+    Call Sleep(500)
+    Call Sleep(500)
+    Call SendComm("AT" & vbCrLf)
+    Call Sleep(100)
+    Call SendComm("ATE0" & vbCrLf)
+    Call Sleep(100)
+    Call SendComm("AT+CMGF=1" & vbCrLf)
+    Call Sleep(100)
+    Call SendComm("AT+CNMI=2,1,0,0,0" & vbCrLf)
+    Text15.Text = ""
+    'rs.Open "update Details set pa=1 where id=" + Text6.Text + " or id=" + Text7.Text + " or id=" + Text8.Text + " or id=" + Text9.Text + " or id=" + Text10.Text + "", con
+End Sub
+
+Private Sub Command5_Click()
+
+SendComm ("AT+CMGS=" & Chr$(34) & Text16.Text & Chr$(34) & vbCrLf)
+
+
+SendComm ("Test message from Train Tracking System" & Chr$(26))
+Call Sleep(1000)
+
+
+
+Text1.Text = ""
+
+
+End Sub
+
+Private Sub Command6_Click()
+ Text2.Text = Text2.Text & 0
+
+    
+    End Sub
+
+Private Sub Command7_Click()
+Text2.Text = Text2.Text & 1
+
+End Sub
+
+Private Sub Command8_Click()
+Text2.Text = Text2.Text & 5
+
+
+End Sub
+
+Private Sub Command9_Click()
+Text2.Text = Text2.Text & 6
+
+End Sub
+
+Private Sub connect_Click()
+If Not MSComm1.PortOpen Then
+   With MSComm1
+            .CommPort = Combo1.ListIndex + 1
+            .Handshaking = comNone
+            .RThreshold = 1
+            .RTSEnable = True
+            .Settings = "9600,n,8,1"
+            .SThreshold = 0
+            .InputLen = 1
+            .PortOpen = True
+    End With
+    Connect.Caption = "DisConnect"
+Else
+Connect.Caption = "Connect"
+MSComm1.PortOpen = False
+End If
+End Sub
+
+Private Sub Form_Load()
+
+  
+  Combo2.AddItem "COM1"
+  Combo2.AddItem "COM2"
+  Combo2.AddItem "COM3"
+  Combo2.AddItem "COM4"
+  Combo2.AddItem "COM5"
+  Combo2.AddItem "COM6"
+  Combo2.AddItem "COM7"
+  Combo2.ListIndex = 0
+  
+  
+      ReDim RecArray(0) As String
+  
+
+End Sub
+
+Private Sub Form_Unload(Cancel As Integer)
+Dim a As Variant
+a = MsgBox("Are you sure want to quit", vbYesNo, "Close")
+If a = vbYes Then
+End
+Else
+Cancel = True
+End If
+End Sub
+
+Private Sub Frame6_DragDrop(Source As Control, X As Single, Y As Single)
+
+End Sub
+Sub SendComm(data As String)
+
+    Dim i As Integer
+    For i = 1 To Len(data)
+        MSComm2.Output = Mid(data, i, 1)
+        Call Sleep(25)
+    Next
+    
+End Sub
+
+
+Sub HandleInput(InBuff As String)
+    If InBuff = "?" Then
+        ReDim RecArray(0) As String
+        Connected = True
+    ElseIf InBuff = "*" And Connected Then
+        Connected = False
+        'call the function
+        Call ProcessInput
+     ElseIf Connected = True Then
+        RecArray(UBound(RecArray)) = RecArray(UBound(RecArray)) & InBuff
+    End If
+   
+    
+    If Not Connected Then
+        If InBuff = "+" Then
+            RecArray(LBound(RecArray)) = "+"
+        Else
+            RecArray(LBound(RecArray)) = RecArray(LBound(RecArray)) + InBuff
+            If Len(RecArray(LBound(RecArray))) = 11 Then
+                If RecArray(LBound(RecArray)) = "+CMTI:""SM""," Then
+                    NDelay = 1
+                    timCap.Interval = 250
+                End If
+            End If
+        End If
+    End If
+    
+End Sub
+
+
+Private Sub timCap_Timer()
+
+    If NDelay = 4 Then
+        timCap.Interval = 0
+        msgCount = Right(RecArray(LBound(RecArray)), Len(RecArray(LBound(RecArray))) - 11)
+        SendComm ("AT+CMGR=" & msgCount & vbCrLf)
+        Call Sleep(1000)
+    End If
+    NDelay = NDelay + 1
+    
+End Sub
+
+Sub ProcessInput()
+    
+    Text18.Text = RecArray(0)
+    
+    SendComm ("AT+CMGD=" & msgCount & vbCrLf)
+    Call Sleep(1000)
+    msgCount = ""
+   
+Dim a() As String
+a = Split(Text15.Text, ",")
+Text13.Text = a(1)
+Text12.Text = a(2)
+Text22.Text = a(3)
+
+ Text19.Text = Right(Text12.Text, 11)
+ Text16.Text = Val(Text19.Text)
+
+ Text15.Text = ""
+ 
+  Call connect1
+    rs.Open "select * from Details where latlon='" + Text3.Text + "'"
+    While rs.EOF = False
+    Text4.Text = rs(0)
+    Text5.Text = rs(1)
+    Text6.Text = rs(2)
+    Text7.Text = rs(3)
+    rs.MoveNext
+    Wend
+    
+  SendComm ("AT+CMGS=" & Chr$(34) & Text16.Text & Chr$(34) & vbCrLf)
+  Call Sleep(1000)
+  Call Sleep(1000)
+   SendComm ("Current Location:" & Text5.Text)
+  Call Sleep(100)
+  SendComm ("Next Location:" & Text6.Text)
+  Call Sleep(100)
+  SendComm (" Distance: " & Text7.Text & "Km")
+  Call Sleep(100)
+   SendComm (" Thank You" & Chr$(26))
+
+  con.Close
+  Text6.Text = ""
+  Text7.Text = ""
+  Text5.Text = ""
+  Text4.Text = ""
+  Text15.Text = ""
+End Sub
+
+Private Sub MSComm2_OnComm()
+ Dim InBuff As String
+    Select Case MSComm2.CommEvent
+        Case comEvReceive
+            InBuff = MSComm2.Input
+            Text15.Text = Text15.Text + InBuff
+            Call HandleInput(InBuff)
+        End Select
+
+      
+  
+End Sub
+Sub AR()
+Dim a() As String
+'A = Split(InBuff, ",")
+Text13.Text = RecArray(0)
+
+End Sub
+
+Private Sub Winsock1_Connect()
+Option1.Value = True
+
+End Sub
+
+Private Sub Winsock1_DataArrival(ByVal bytesTotal As Long)
+Dim buf As String
+Dim lft As String
+Dim rgt As String
+Dim a() As String
+Winsock1.GetData buf
+        'buf = Text1.Text
+  lft = Left(buf, 1)
+  rgt = Right(buf, 1)
+            If lft = "#" And rgt = "*" Then
+                a = Split(buf, "$")
+                Text3.Text = a(1)
+                Form2.Text1.Text = a(1)
+                
+             End If
+
+End Sub
+

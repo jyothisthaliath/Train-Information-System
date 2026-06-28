@@ -140,10 +140,10 @@ The development stack spanned multiple environments:
 
 ## 💻 Firmware & Source Code
 
-The firmware source code has been extracted and organized into logical C files.
+The source code has been extracted and organized into logical modules.
 
 > [!NOTE]
-> Only the microchip C firmware files are included in this repository. The Visual Basic 6.0 desktop application source code is not available as it was lost.
+> The microchip C firmware source files and the Visual Basic 6.0 kiosk/SMS server application are both included in this repository.
 
 ### 1. Onboard Train Module Firmware
 Located under [`code/train_module/`](code/train_module/):
@@ -154,6 +154,30 @@ Located under [`code/train_module/`](code/train_module/):
 ### 2. Touch Screen Kiosk Firmware
 Located under [`code/touch_module/`](code/touch_module/):
 *   [`main.c`](code/touch_module/main.c): Scans X and Y axes on the resistive touch panel by manipulating transistors on the H-bridge (`RB3`, `RB4`, and `RA0` ADC input) and transmits Microsoft serial mouse protocol coordinate packets.
+
+### 3. VB6 Kiosk & SMS Server Application
+Located under [`code/kiosk_program/`](code/kiosk_program/):
+
+> [!NOTE]
+> The VB6 source code for the desktop kiosk and SMS server is preserved here for archival and reference purposes.
+
+*   [`TrainTracking.vbp`](code/kiosk_program/TrainTracking.vbp): VB6 project file. Compiles to `Train.exe`.
+*   [`Form1.frm`](code/kiosk_program/Form1.frm): Main kiosk form — handles Winsock TCP connection to the onboard train module (port 2050), MSComm serial control for the GSM modem, on-screen touch keypad, GPS coordinate parsing (NMEA → decimal degrees), and automated SMS reply logic.
+*   [`Form2.frm`](code/kiosk_program/Form2.frm): Station data entry form — allows adding station records (lat/lon, location, next station, distance) to the Access database.
+*   [`frmBrowser.frm`](code/kiosk_program/frmBrowser.frm): Embedded IE WebBrowser control that renders train position on a map using lat/lon coordinates.
+*   [`connection.bas`](code/kiosk_program/connection.bas): ADO database connection module — opens `railway.mdb` via Microsoft Jet OLEDB 4.0 provider.
+*   [`Module2.bas`](code/kiosk_program/Module2.bas): Utility module — numeric input validation and Enter-to-Tab key handling. Declares `kernel32.Sleep` API.
+*   [`railway.mdb`](code/kiosk_program/database/railway.mdb): MS Access database containing the `details` table with station coordinates, names, and distances.
+
+#### Legacy Dependencies
+The VB6 application requires several ActiveX controls that were standard in the Windows XP / VB6 era:
+*   **MSADODC.OCX** — ADO Data Control (database binding)
+*   **MSCOMM32.OCX** — Serial port communication (GSM modem interface)
+*   **MSWINSCK.OCX** — Winsock TCP/IP control (train module connection)
+*   **MSINET.OCX** — Internet Transfer Control
+*   **shdocvw.dll** — Internet Explorer WebBrowser Control
+
+All required OCX files and runtime DLLs are included in the [`code/kiosk_program/installer/`](code/kiosk_program/installer/) directory, along with a prebuilt **setup program** (`setup.exe`) that registers the dependencies and installs a compiled `Train.exe` on Windows.
 
 ---
 
@@ -187,10 +211,16 @@ The microcontrollers are programmed in Embedded C using the HI-TECH C compiler (
 6.  Flash the binary using a PIC programmer (e.g., PICkit 2 or PICkit 3).
 
 ### 2. Desktop Kiosk Application
-> [!WARNING]
-> **Source Code Lost**: The Visual Basic 6.0 (VB6) source code for the Desktop Kiosk and SMS server application was unfortunately lost over time and is **not available** in this repository.
-> 
-> However, the design, functional logic, and serial database communication logic are fully documented in the [Full Project Report](docs/report_body.md#chapter-7-software-section) as an architectural reference.
+> [!NOTE]
+> The VB6 source code is available under [`code/kiosk_program/`](code/kiosk_program/). It requires Visual Basic 6.0 IDE (SP6) to open and compile.
+
+1.  Open `TrainTracking.vbp` in the VB6 IDE.
+2.  Ensure the required OCX controls are registered (available in `code/kiosk_program/installer/Support/`).
+3.  Set the COM port in the `Combo2` dropdown to match your USB-Serial adapter.
+4.  Place `railway.mdb` in the same directory as the compiled executable.
+5.  Compile via **File → Make Train.exe**.
+
+Alternatively, a prebuilt VB6 Package & Deployment installer is available under [`code/kiosk_program/installer/`](code/kiosk_program/installer/). Running `setup.exe` will register all required OCX controls and install the compiled application.
 
 ---
 
